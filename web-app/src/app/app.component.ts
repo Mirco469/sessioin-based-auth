@@ -13,17 +13,26 @@ export class AppComponent {
   constructor(private http: HttpClient) {}
 
   doLogin() {
-    // TODO
     this.http
-      .get('http://localhost:3000/auth/login')
+      .get('http://localhost:3000/auth/login', { withCredentials: true })
       .subscribe((response) => console.log(response));
   }
 
   doServiceCall() {
-    // TODO
+    this.http
+      .get('http://localhost:3000/auth/some-service', { withCredentials: true })
+      .subscribe((response) => console.log(response));
+  }
+
+  doExternalServiceCall() {
+    this.http
+      .get('http://localhost:3001/some-ext-service', { withCredentials: true })
+      .subscribe((response) => console.log(response));
   }
 
   doLogout() {
-    // TODO
+    this.http
+      .get('http://localhost:3000/auth/logout', { withCredentials: true })
+      .subscribe((response) => console.log(response));
   }
 }
